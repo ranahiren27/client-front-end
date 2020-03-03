@@ -51,6 +51,7 @@ class Login extends React.Component {
               );
               this.setState({ login: true });
               this.storeColector();
+              window.location.reload(); 
             }
           })
           .catch(err => {

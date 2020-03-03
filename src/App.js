@@ -199,8 +199,9 @@ class App extends React.Component {
     super(props);
     this.state = {
       login: false,
-      signup: false
-      };
+      signup: false,
+      logedIn: localStorage.getItem('user-login') === null ? false : true
+    };
   }
 
   // getLocalStore = () => {
@@ -229,8 +230,19 @@ class App extends React.Component {
   onCloseSignUpModal = () => {
     this.setState({ signup: false });
   };
-
+  logout = () => {
+    localStorage.clear();
+    window.location.reload();
+  }
   render() {
+    const localUserData = JSON.parse(localStorage.getItem('user-login'));
+    let logedin;
+    if (localUserData !== null) {
+      logedin = localUserData.login;
+    } else {
+      logedin = false;
+    }
+    let notLogedIn = !logedin;
     return (
       <div className="App">
         <Router>
@@ -321,22 +333,44 @@ class App extends React.Component {
             {/* <div className="w3-bar-item w3-button w3-red" style={{padding:"18px"}}>
             See All Products
           </div> */}
-            <Link
-              to="#"
-              className="w3-bar-item w3-button w3-red w3-right"
-              style={{ padding: "18px" }}
-              onClick={this.onOpenLoginModal}
-            >
-              Login
+            {(logedin &&
+              <div>
+                <Link
+                  to=""
+                  className="w3-bar-item w3-button w3-red w3-right"
+                  style={{ padding: "18px" }}
+                  onClick={this.logout}
+                  refresh="true"
+                >
+                  Logout
             </Link>
-            <Link
-              to="#"
-              className="w3-bar-item w3-button w3-red w3-right"
-              style={{ padding: "18px" }}
-              onClick={this.onOpenSignUpModal}
-            >
-              SignUp
+                <div
+                  to="#"
+                  className="w3-bar-item w3-button w3-red w3-right"
+                  style={{ padding: "18px" }}
+                >
+                  Welcome {localUserData.data.name}
+                </div>
+              </div>)}
+            {(notLogedIn &&
+              <div>
+                <Link
+                  to="#"
+                  className="w3-bar-item w3-button w3-red w3-right"
+                  style={{ padding: "18px" }}
+                  onClick={this.onOpenLoginModal}
+                >
+                  Login
             </Link>
+                <Link
+                  to="#"
+                  className="w3-bar-item w3-button w3-red w3-right"
+                  style={{ padding: "18px" }}
+                  onClick={this.onOpenSignUpModal}
+                >
+                  SignUp
+            </Link>
+              </div>)}
           </div>
           <div className="main">
             <Switch>
@@ -372,6 +406,7 @@ class App extends React.Component {
         </Router>
       </div>
     );
+
   }
 }
 

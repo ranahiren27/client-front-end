@@ -32,7 +32,7 @@
 
 .product-name {
     /* position: relative; */
-    bottom: 9px;
+    bottom: 0px;
     left: 0px;
     font-size: 30px;
     font-weight: bold;
@@ -79,6 +79,7 @@
 }
 
 .gallary-container {
+    align-content: center;
     display: block;
     border: cyan;
     height: 80%;
