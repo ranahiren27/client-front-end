@@ -4,7 +4,7 @@ import { Link, BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ShowCase from "./Components/showCase";
 import ProdcutsByType from "./Components/productsByType";
 import ProdcutsBySubType from "./Components/productsBySubType";
-
+import Footer from "./Components/footer";
 const lookup = {
   empty: [],
   wine: [
@@ -301,9 +301,17 @@ class App extends React.Component {
               <Route path="/" exact>
                 <ShowCase />
               </Route>
-              <Route path="/products/:type/:sub_type" render={props => <ProdcutsBySubType {...props} />} />
-              <Route path="/products/:type" exact render={props => <ProdcutsByType {...props} />} />
+              <Route
+                path="/products/:type/:sub_type"
+                render={props => <ProdcutsBySubType {...props} />}
+              />
+              <Route
+                path="/products/:type"
+                exact
+                render={props => <ProdcutsByType {...props} />}
+              />
             </Switch>
+            <Footer />
           </div>
         </Router>
       </div>

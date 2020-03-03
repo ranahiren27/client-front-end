@@ -1,15 +1,15 @@
 import React from "react";
 import Axios from "axios";
-import Product from './product';
-import {Spring} from 'react-spring';
-import './product.css';
+import Product from "./product";
+import { Spring } from "react-spring";
+import "./product.css";
 class ProdcutsByType extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       products: [],
-      type: '',
-      sub_type: ''
+      type: "",
+      sub_type: ""
     };
   }
 
@@ -23,37 +23,41 @@ class ProdcutsByType extends React.Component {
 
   render() {
     let { type, sub_type } = this.props.match.params;
-    if(type !== this.state.type || sub_type !== this.state.sub_type){
-      this.setState({type: this.props.match.params.type, sub_type: this.props.match.params.sub_type});
+    if (type !== this.state.type || sub_type !== this.state.sub_type) {
+      this.setState({
+        type: this.props.match.params.type,
+        sub_type: this.props.match.params.sub_type
+      });
       this.fetchProducts(type, sub_type);
     }
     const products = this.state.products;
+    console.log(products);
+    if(products.length === 0){
+      return(
+        <div>
+        <div className="gallary-container" style={{textAlign: 'center', margin: 'auto'}}>
+            <h1>Sorry this product is not available now!!</h1>
+        </div>
+      </div>  
+      )
+    }
     return (
-      <Spring
-        from={{ opacity: 0 }}
-        to={{ opacity: 1 }}
-        config={{ duration:1000 }}
-      >
-          {props => (
-            <div style={props}>
-                <div>
-                  <div className="gallary-container">
-                    <div className="gallary">
-                      {products.map(prod => (
-                        <Product 
-                          name={prod.name}
-                          type={prod.type}
-                          sub_type={prod.sub_type}
-                          price={prod.price} 
-                          src={prod.img_path} 
-                          key={prod._id} />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-            </div>
-          )}
-      </Spring>
+      <div>
+        <div className="gallary-container">
+          <div className="gallary">
+            {products.map(prod => (
+              <Product
+                name={prod.name}
+                type={prod.type}
+                sub_type={prod.sub_type}
+                price={prod.price}
+                src={prod.img_path}
+                key={prod._id}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
     );
   }
 }
