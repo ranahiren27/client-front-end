@@ -9,37 +9,9 @@ import {logo} from './logo.jpg';
 class ShowCase extends React.Component {
   render() {
     return (
-      <div className="carousel">
-        <div id="slider">
-          <div className="slides">
-            <div className="slider">
-              <div className="legend"></div>
-              <div className="content">
-                <div className="content-txt">
-                  <h1>Lorem ipsum dolor</h1>
-                  <h2>
-                    Nam ultrices pellentesque facilisis. In semper tellus mollis
-                    nisl pulvinar vitae vulputate lorem consequat. Fusce odio
-                    tortor, pretium sit amet auctor ut, ultrices vel nibh.
-                  </h2>
-                </div>
-              </div>
-              <div className="image">
-                <img src='https://robbreportedit.files.wordpress.com/2019/11/host-guide-wine.jpg' alt="animation image" />
-              </div>
-            </div>
-          </div>
-          <div className="switch">
-            <ul>
-              <li>
-                <div className="on"></div>
-              </li>
-              <li>Welcome </li>
-              <li>to </li>
-              <li>wine shop</li>
-            </ul>
-          </div>
-        </div>
+      <div className="carousel" style={{background:"url('https://robbreportedit.files.wordpress.com/2019/11/host-guide-wine.jpg')", height:'800px', backgroundEepeat: 'no-repeat',
+      backgroundSize: 'cover'}}>
+        <h1 style={{textAlign:'center', paddingTop:'350px', color:'red', fontSize:'100px'}}>Welcome to wine shop</h1>
       </div>
     );
   }

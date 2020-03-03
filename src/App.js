@@ -5,6 +5,8 @@ import ShowCase from "./Components/showCase";
 import ProdcutsByType from "./Components/productsByType";
 import ProdcutsBySubType from "./Components/productsBySubType";
 import Footer from "./Components/footer";
+import Modal from "react-responsive-modal";
+
 const lookup = {
   empty: [],
   wine: [
@@ -190,6 +192,29 @@ const lookup = {
 };
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      login: false,
+      signup: false
+    };
+  }
+  
+  onOpenLoginModal = () => {
+    this.setState({ login: true });
+  };
+
+  onCloseLoginModal = () => {
+    this.setState({ login: false });
+  };
+  onOpenSignUpModal = () => {
+    this.setState({ signup: true });
+  };
+
+  onOpenSignUpModal = () => {
+    this.setState({ signup: false });
+  };
+
   render() {
     return (
       <div className="App">
@@ -285,6 +310,7 @@ class App extends React.Component {
               to="#"
               className="w3-bar-item w3-button w3-red w3-right"
               style={{ padding: "18px" }}
+              onClick={this.onOpenLoginModal}
             >
               Login
             </Link>
@@ -292,6 +318,7 @@ class App extends React.Component {
               to="#"
               className="w3-bar-item w3-button w3-red w3-right"
               style={{ padding: "18px" }}
+              onClick={this.onOpenSignUpModal}
             >
               Signup
             </Link>
@@ -313,8 +340,19 @@ class App extends React.Component {
             </Switch>
             <Footer />
           </div>
-          <Modal open={this.state.login} onClose={this.onCloseModal} center>
-
+          <Modal
+            open={this.state.login}
+            onClose={this.onCloseLoginModal}
+            center
+          >
+            Login
+          </Modal>
+          <Modal
+            open={this.state.signup}
+            onClose={this.onCloseSignUpModal}
+            center
+          >
+            Sign Up
           </Modal>
         </Router>
       </div>
