@@ -28,15 +28,21 @@ class Product extends React.Component {
             <div className="product-img">
               <img
                 src={`http://localhost:3000/${path}`}
-                width="200"
-                height="200"
+                style={{ width: "100%" }}
               />
             </div>
-            <div className="product-name">{this.props.name}</div>
-            <div className="product-details">
-              <div className="product-price">$ {this.props.price}</div>
+            <hr />
+            <div className="product-name">
+              {this.props.name}
+                <div style={{float:'right', color:'red', fontSize: '25px'}}>$ {this.props.price}</div>
+            </div>
+            
+            <div className="product-name" style={{float:'left', fontSize:'20px', padding:'10px', paddingLeft:'0px'}}>
+              {this.props.type}
+               ({this.props.sub_type})
             </div>
           </div>
+          
         </div>
         <Modal open={this.state.open} onClose={this.onCloseModal} center>
           <img

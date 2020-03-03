@@ -313,6 +313,9 @@ class App extends React.Component {
             </Switch>
             <Footer />
           </div>
+          <Modal open={this.state.login} onClose={this.onCloseModal} center>
+
+          </Modal>
         </Router>
       </div>
     );

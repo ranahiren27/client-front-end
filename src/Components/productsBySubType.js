@@ -36,6 +36,7 @@ class ProdcutsByType extends React.Component {
       return(
         <div>
         <div className="gallary-container" style={{textAlign: 'center', margin: 'auto'}}>
+        <div><h1>{this.state.type} / {this.state.sub_type}</h1></div>
             <h1>Sorry this product is not available now!!</h1>
         </div>
       </div>  
@@ -44,6 +45,8 @@ class ProdcutsByType extends React.Component {
     return (
       <div>
         <div className="gallary-container">
+        <div><h1>{this.state.type} / {this.state.sub_type}</h1></div>
+
           <div className="gallary">
             {products.map(prod => (
               <Product

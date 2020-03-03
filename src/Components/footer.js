@@ -3,7 +3,7 @@ import React from "react";
 class Footer extends React.Component {
   render() {
     return (
-      <section id="footer">
+      <section id="footer" style={{position:'static', paddingTop: '52em'}}>
         <div class="first">
           <h4>About</h4>
           <a href="/">siteInspire</a> is a showcase of the finest web and
