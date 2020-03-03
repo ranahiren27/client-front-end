@@ -32,16 +32,13 @@ class Product extends React.Component {
     this.setState({ open: false });
   };
   addToCart = () => {
-    if (this.state.logedIn === false) {
-      alert('Plase login to add product in cart');
-      return;
-    }
     if (localStorage.getItem('kart') === null) {
-      localStorage.setItem('kart', this.props.name.toString() + ',')
+      localStorage.setItem('kart', this.props.name.toString() + '-----')
     } else {
       let data = localStorage.getItem('kart');
-      localStorage.setItem('kart', data + this.props.toString());
+      localStorage.setItem('kart', data + this.props.name.toString());
     }
+    alert('Product added to cart!!');
   }
   render() {
     const path = this.props.src.split("/uploads/")[1];

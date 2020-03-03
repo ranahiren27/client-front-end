@@ -3,13 +3,13 @@ import React from "react";
 class Footer extends React.Component {
   render() {
     return (
-      <section id="footer" style={{position:'static', paddingTop: '52em'}}>
-        <div class="first">
+      <section id="footer" style={{position:'static', paddingTop: '2em', fontSize:'20px', width:'80%'}}>
+        <div className="first">
           <h4>About</h4>
           <a href="/">siteInspire</a> is a showcase of the finest web and
           interactive design.
         </div>
-        <div class="latest">
+        <div className="latest">
           <h4>Latest Websites</h4>
           <ul>
             <li>
@@ -23,7 +23,7 @@ class Footer extends React.Component {
             </li>
           </ul>
         </div>
-        <div class="links">
+        <div className="links">
           <h4>Information</h4>
           <ul>
             <li>
@@ -39,12 +39,12 @@ class Footer extends React.Component {
             </li>
           </ul>
         </div>
-        <div class="social">
+        <div className="social">
           <h4>Connect with Us</h4>
           <ul>
             <li>
               <a
-                class="twitter"
+                className="twitter"
                 href="https://twitter.com/siteinspire"
                 target="_blank"
               >
@@ -53,7 +53,7 @@ class Footer extends React.Component {
             </li>
             <li>
               <a
-                class="facebook"
+                className="facebook"
                 href="https://facebook.com/siteinspire"
                 target="_blank"
               >
@@ -62,7 +62,7 @@ class Footer extends React.Component {
             </li>
             <li>
               <a
-                class="tumblr"
+                className="tumblr"
                 href="http://siteinspire.tumblr.com/"
                 target="_blank"
               >
@@ -71,7 +71,7 @@ class Footer extends React.Component {
             </li>
             <li>
               <a
-                class="rss"
+                className="rss"
                 href="https://feeds2.feedburner.com/Siteinspire"
                 target="_blank"
               >
@@ -80,7 +80,7 @@ class Footer extends React.Component {
             </li>
             <li>
               <a
-                class="email"
+                className="email"
                 href="mailto:mail@siteinspire.com"
                 target="_blank"
               >
@@ -89,7 +89,7 @@ class Footer extends React.Component {
             </li>
           </ul>
         </div>
-        <div class="copyright">
+        <div className="copyright">
           Copyright © 2020{" "}
           <a href="http://howellsstudio.com" target="_blank">
             Howells—Studio

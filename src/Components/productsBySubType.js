@@ -1,7 +1,7 @@
 import React from "react";
 import Axios from "axios";
 import Product from "./product";
-import { Spring } from "react-spring";
+import { Spring } from "react-spring/renderprops";
 import "./product.css";
 class ProdcutsByType extends React.Component {
   constructor(props) {
@@ -32,34 +32,43 @@ class ProdcutsByType extends React.Component {
     }
     const products = this.state.products;
     console.log(products);
-    if(products.length === 0){
-      return(
+    if (products.length === 0) {
+      return (
         <div>
-        <div className="gallary-container" style={{textAlign: 'center', margin: 'auto'}}>
-        <div><h1>{this.state.type} / {this.state.sub_type}</h1></div>
+          <div className="gallary-container" style={{ textAlign: 'center', margin: 'auto' }}>
+            <div><h1>{this.state.type} / {this.state.sub_type}</h1></div>
             <h1>Sorry this product is not available now!!</h1>
+          </div>
         </div>
-      </div>  
       )
     }
     return (
-      <div>
-        <div className="gallary-container">
-        <div><h1>{this.state.type} / {this.state.sub_type}</h1></div>
 
-          <div className="gallary">
-            {products.map(prod => (
-              <Product
-                name={prod.name}
-                type={prod.type}
-                sub_type={prod.sub_type}
-                price={prod.price}
-                src={prod.img_path}
-                key={prod._id}
-              />
-            ))}
-          </div>
-        </div>
+      <div>
+        <Spring
+          from={{ opacity: 0, top: "0%" }}
+          to={{ opacity: 1, top: "100%" }}
+          config={{ duration: 3000 }}
+        >
+          {props => (
+            <div className="gallary-container">
+              <div><h1>{this.state.type} / {this.state.sub_type}</h1></div>
+
+              <div className="gallary">
+                {products.map(prod => (
+                  <Product
+                    name={prod.name}
+                    type={prod.type}
+                    sub_type={prod.sub_type}
+                    price={prod.price}
+                    src={prod.img_path}
+                    key={prod._id}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+        </Spring>
       </div>
     );
   }

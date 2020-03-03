@@ -7,7 +7,7 @@ import ProdcutsBySubType from "./Components/productsBySubType";
 import Footer from "./Components/footer";
 import Modal from "react-responsive-modal";
 import Login from './Components/login';
-import SignUp from './Components/signUp';
+import CheckOut from './Components/checkOut';
 import SingUp from './Components/signUp';
 
 const lookup = {
@@ -344,13 +344,13 @@ class App extends React.Component {
                 >
                   Logout
             </Link>
-                <div
-                  to="#"
+                <Link
+                  to="/checkout"
                   className="w3-bar-item w3-button w3-red w3-right"
                   style={{ padding: "18px" }}
                 >
-                  Welcome {localUserData.data.name}
-                </div>
+                  Welcome {localUserData.data.name} CheckOut from here
+                </Link>
               </div>)}
             {(notLogedIn &&
               <div>
@@ -386,7 +386,10 @@ class App extends React.Component {
                 exact
                 render={props => <ProdcutsByType {...props} />}
               />
-            </Switch>
+              <Route path="/checkout" exact>
+                <CheckOut />
+              </Route>
+              </Switch>
             <Footer />
           </div>
           <Modal
