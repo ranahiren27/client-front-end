@@ -6,6 +6,9 @@ import ProdcutsByType from "./Components/productsByType";
 import ProdcutsBySubType from "./Components/productsBySubType";
 import Footer from "./Components/footer";
 import Modal from "react-responsive-modal";
+import Login from './Components/login';
+import SignUp from './Components/signUp';
+import SingUp from './Components/signUp';
 
 const lookup = {
   empty: [],
@@ -197,9 +200,20 @@ class App extends React.Component {
     this.state = {
       login: false,
       signup: false
-    };
+      };
   }
-  
+
+  // getLocalStore = () => {
+  //   const userLocalData = localStorage.getItem('user-login');
+  //   console.log(userLocalData);
+  //   if (userLocalData !== null) {
+  //     this.setState({ store: JSON.parse(userLocalData) });
+  //     return JSON.parse(userLocalData);
+  //     this.setState({logedin: true})
+  //   }
+  //   return null;
+  // }
+
   onOpenLoginModal = () => {
     this.setState({ login: true });
   };
@@ -208,10 +222,11 @@ class App extends React.Component {
     this.setState({ login: false });
   };
   onOpenSignUpModal = () => {
+    // console.log('open')
     this.setState({ signup: true });
   };
 
-  onOpenSignUpModal = () => {
+  onCloseSignUpModal = () => {
     this.setState({ signup: false });
   };
 
@@ -219,9 +234,9 @@ class App extends React.Component {
     return (
       <div className="App">
         <Router>
-          <div className="w3-bar w3-red w3-xlarge">
-            <Link to="/" className="w3-bar-item w3-button w3-red">
-              <img src="./assets/logo.png" alt="Company logo" height="60" />
+          <div className="w3-bar w3-red w3-xlarge" style={{ zIndex: '1' }}>
+            <Link to="/" className="w3-bar-item w3-button w3-red" >
+              <img src='http://localhost:3000/logo.png' alt="Company logo" style={{ height: '40px', width: '80px', margin: '10px' }} />
             </Link>
             <div className="w3-dropdown-hover" style={{ padding: "10px" }}>
               <Link to="/products/wine" className="w3-button">
@@ -320,7 +335,7 @@ class App extends React.Component {
               style={{ padding: "18px" }}
               onClick={this.onOpenSignUpModal}
             >
-              Signup
+              SignUp
             </Link>
           </div>
           <div className="main">
@@ -345,14 +360,14 @@ class App extends React.Component {
             onClose={this.onCloseLoginModal}
             center
           >
-            Login
+            <Login />
           </Modal>
           <Modal
             open={this.state.signup}
             onClose={this.onCloseSignUpModal}
             center
           >
-            Sign Up
+            <SingUp />
           </Modal>
         </Router>
       </div>
